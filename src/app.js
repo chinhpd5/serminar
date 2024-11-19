@@ -1,4 +1,4 @@
-// Import thư viện
+// Import thư viện// module
 import express from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config'
@@ -18,7 +18,10 @@ app.use(express.json());
 // Cấu hình các Router
 // Khai báo router product
 import routerProduct from './router/product.router.js'
+import routerUser from './router/user.router.js'
+
 app.use('/api/product',routerProduct);
+app.use('/api/auth',routerUser);
 
 
 app.listen(port, () => {
