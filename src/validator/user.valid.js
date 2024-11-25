@@ -19,6 +19,9 @@ export const registerValidate = Joi.object({
         "string.base": "Password cần có kiểu dữ liệu chuỗi",
         "string.min":"Password cần tối thiểu 6 kí tự"
     }),
+    role: Joi.number().messages({
+        "number.base": "Role cần có kiểu dữ liệu số",
+    })
 })
 
 export const loginValidate = Joi.object({

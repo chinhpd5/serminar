@@ -44,7 +44,6 @@ export const register = async (req,res)=>{
 }
 
 // Đăng nhập
-
 export const login = async (req,res) =>{
     try {
         //B1: Kiểm tra (validate) dữ liệu
@@ -69,9 +68,9 @@ export const login = async (req,res) =>{
         }
         //B4: sử JWT để tạo token
         const token = jwt.sign(
-            {id: exitsUser.id, email: exitsUser.email, username: exitsUser.username},
+            {id: exitsUser.id},
             process.env.KEY_SECRET,// key sercret
-            {expiresIn: '10m'} // thời gian tồn tại
+            {expiresIn: '2h'} // thời gian tồn tại
         )
 
         //B5: Thông báo
