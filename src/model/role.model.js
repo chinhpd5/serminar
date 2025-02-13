@@ -1,24 +1,16 @@
 import mongoose from "mongoose";
 
-const roleSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    value:{
-        type:Number,
-        default: 0
-    },
-    description: {
-        type: String
-    },
-    permissionsId:[
-        {
-            type: mongoose.Schema.Types.ObjectId, // Kiểu dữ liệu của _id
-            ref: 'Permissions'
-        }
-    ]
-},{versionKey: false, timestamps: true});
+const roleSchema = new mongoose.Schema({
+  name:{
+    type: String,
+    required: true
+  },
+  permissions: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: 'Permission'
+    }
+  ]
+})
 
-export default mongoose.model("Roles",roleSchema)
-
+export default mongoose.model('Role', roleSchema);

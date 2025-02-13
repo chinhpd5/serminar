@@ -18,10 +18,10 @@ app.use(express.json());
 // Cấu hình các Router
 // Khai báo router product
 import routerProduct from './router/product.router.js'
-import routerUser from './router/user.router.js'
+import routerAuth from './router/auth.router.js'
 
 app.use('/api/product',routerProduct);
-app.use('/api/auth',routerUser);
+app.use('/api',routerAuth);
 
 
 app.listen(port, () => {
