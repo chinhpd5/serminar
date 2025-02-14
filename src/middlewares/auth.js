@@ -14,10 +14,17 @@ export const checkAuth  = async (req,res,next) =>{
 
     jwt.verify(token,process.env.KEY_SECRET,(err,decode)=>{
       if(err){
-        return res.status(400).json({
-          isSucces: false,
-          message: "Sai token hoặc token hết hạn"
-        })
+        if (err.name == "JsonWebTokenError") {
+          return res.status(401).json({ 
+            isSucces: false,
+            message: "Sai token" 
+          });
+        }else if(err.name === "TokenExpiredError")
+          return res.status(401).json({
+            isSucces: false,
+            message: "Token hết thời hạn"
+        });
+      
       }
       
       req.user = decode
@@ -26,6 +33,8 @@ export const checkAuth  = async (req,res,next) =>{
     })
 
   } catch (error) {
+    console.log(error);
+    
     return res.status(500).json({
       isSucces: false,
       message: error

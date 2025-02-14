@@ -35,7 +35,7 @@ export const checkAdmin = async (req,res,next) =>{
 export const checkPermission = (namePermission) =>{
   return  async (req,res,next) =>{
     try {
-      const exitsUser = await User.findById(req.user.userId).populate('roleId');
+      const exitsUser = await User.findById(req.user.userId);
       
       if(!exitsUser){
         return res.status(400).json({
@@ -44,7 +44,7 @@ export const checkPermission = (namePermission) =>{
         })
       }
 
-      const role = await Role.findById(exitsUser.roleId.id).populate('permissions');
+      const role = await Role.findOne({name: exitsUser.role }).populate('permissions');
       
       const checkPermission = role?.permissions.some((permission)=>{
         return permission.name == namePermission
@@ -56,7 +56,7 @@ export const checkPermission = (namePermission) =>{
           message: "Bạn không có quyền sử dụng chức năng này"
         })
       }
-      // next()
+      next()
 
     } catch (error) {
       return res.status(400).json({

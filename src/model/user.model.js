@@ -14,9 +14,10 @@ const userModel = new mongoose.Schema({
     type: String,
     required: true
   },
-  roleId:{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Role'
+  role:{
+    type: String,
+    enum: ["admin","author","member"],
+    default: "member"
   }
 },{versionKey: false, timestamps: true});
 

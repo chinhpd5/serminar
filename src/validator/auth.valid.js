@@ -27,6 +27,10 @@ export const registerValidator = Joi.object({
     "string.base": "Password cần kiểu dữ liệu chuỗi",
     "any.only": "Xác nhận mật khẩu không khớp"
   }),
+  role: Joi.string().valid("member","author","admin").messages({
+    "string.base": "role cần kiểu dữ liệu chuỗi",
+    "any.only": "role chỉ nhận giá trị member, author hoặc admin"
+  })
 })
 
 export const loginValidator = Joi.object({

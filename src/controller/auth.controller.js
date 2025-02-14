@@ -79,7 +79,7 @@ export const login = async (req,res) =>{
       })
     }
     // Bước 4: tạo token
-    const token = await jwt.sign({userId: exitUser.id},process.env.KEY_SECRET,{expiresIn: '2h'})
+    const token = await jwt.sign({userId: exitUser.id},process.env.KEY_SECRET,{expiresIn: '30m'})
 
     // Bước 5: Thông báo
     return res.status(200).json({

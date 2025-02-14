@@ -19,7 +19,7 @@ export async function getById(req,res){
     try{
         const id = req.params.id;
         if(!id){
-            return res.status(404).json({ message: "Không tìm thấy id"})
+          index(req,res)
         }
 
         const data = await Products.findById(id).populate('categoryId');
