@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from "joi";aaa
 
 export const registerValidator = Joi.object({
   name: Joi.string().required().max(255).messages({
