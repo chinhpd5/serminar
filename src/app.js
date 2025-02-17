@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config'
 
 // Khởi tạo server
-const app = express();aaaa
+const app = express();12345
 // Khởi tạo cổng 
 const port = process.env.PORT || 3000;
 
