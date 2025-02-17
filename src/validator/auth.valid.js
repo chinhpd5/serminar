@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import Joi from "joi";aaaa
-=======
-import Joi from "joi";aaa
->>>>>>> test
+import Joi from "joi";
 
 export const registerValidator = Joi.object({
   name: Joi.string().required().max(255).messages({
